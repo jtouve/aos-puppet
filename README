@@ -1,0 +1,44 @@
+aos-puppet
+
+This is a is a plugin intended to allow the Puppet software suit to manage some basic functions of Alcatel-Lucent Enterprise (ALE International) products running the AOS 7 or 8 operating systems.  
+
+This plugin supports the following:
+
+        - VLANs (aos_a_vlan)
+          - Creation/Deletion (deletion currently broken)
+          - Description
+          - Admin Status
+
+        - Interfaces (aos_b_interface)
+          - Alias
+          - Default VLAN
+          - VLAN Tags
+
+        - Facts (untested.  Puppet currently only supports facts for network devices through PuppetDB and not Facter)
+
+Using this plugin on devices that are not running  AOS 7.x.x or 8.x.x will probably result in errors.  In fact, you will probably find errors anyways. For folks comfortable with Ruby, the code is fairly straight forward and easy to modify.
+
+Usage
+-------
+1. Add a device as type aos to your device.conf (make sure you have dns set up for the name, or an entry in /etc/hosts for the switches)
+
+  [my_aos_switch]
+    type aos
+    url ssh://user:password@my_aos_switch
+
+2. Create a site.pp or create your own module with the configuration as outlined in examples/
+
+3. Run 'puppet device'.  use the '-v' and '--debug' to get a clear idea of whats happening.
+
+License
+-------
+Apache 2.0
+
+Contact
+-------
+jeremy.touve@alcatel-lucent.com
+
+Support
+-------
+
+This software is intended for experimental use only and is not maintained or supported.
